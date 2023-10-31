@@ -1,14 +1,11 @@
-#Technologies Used
-*
-Express
-Express-validator
+### Technologies Used:
+Express Express-validator
 MongoDB/Mongoose
 JWT
-Multer
+Multer 
 BCrypt
-*
 
-###To start using this project, please follow these steps:
+### To start using this project, please follow these steps:
 
 1. Run "npm install" command to install all necessary packages and dependencies.
 
@@ -21,7 +18,7 @@ SECRETCODE="" # JWT
 
 3. To run the project, use either "npm run start:dev" or "node index.js" commands.
 
-###Example requests:
+### Example requests:
 
 1. POST http://localhost:port/auth/register
 Request body:
