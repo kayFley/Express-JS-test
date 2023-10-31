@@ -1,9 +1,9 @@
 ### Technologies Used:
-Express Express-validator
-MongoDB/Mongoose
-JWT
-Multer 
-BCrypt
+Express, Express-validator;
+MongoDB/Mongoose;
+JWT;
+Multer;
+BCrypt;
 
 ### To start using this project, please follow these steps:
 
