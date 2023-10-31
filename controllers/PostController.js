@@ -34,7 +34,7 @@ export const getOne = async (req, res) => {
     try {
         const postId = req.params.id;
 
-        PostModel.findOneAndUpdate(
+        const doc = await PostModel.findOneAndUpdate(
             {
                 _id: postId,
             },
@@ -43,24 +43,16 @@ export const getOne = async (req, res) => {
             },
             {
                 returnDocument: "after",
-            },
-            (err, doc) => {
-                if (err) {
-                    console.log(err);
-                    return res.status(500).json({
-                        message: "Failed to return the article",
-                    });
-                }
-
-                if (!doc) {
-                    return res.status(404).json({
-                        message: "Article not found",
-                    });
-                }
-
-                res.json(doc);
             }
         ).populate("user");
+
+        if (!doc) {
+            return res.status(404).json({
+                message: "Article not found",
+            });
+        }
+
+        res.json(doc);
     } catch (err) {
         console.log(err);
         res.status(500).json({
@@ -73,33 +65,23 @@ export const remove = async (req, res) => {
     try {
         const postId = req.params.id;
 
-        PostModel.findOneAndDelete(
-            {
-                _id: postId,
-            },
-            (err, doc) => {
-                if (err) {
-                    console.log(err);
-                    return res.status(500).json({
-                        message: "Failed to delete article",
-                    });
-                }
+        const doc = await PostModel.findOneAndDelete({
+            _id: postId,
+        });
 
-                if (!doc) {
-                    return res.status(404).json({
-                        message: "Article not found",
-                    });
-                }
+        if (!doc) {
+            return res.status(404).json({
+                message: "Article not found",
+            });
+        }
 
-                res.json({
-                    success: true,
-                });
-            }
-        );
+        res.json({
+            success: true,
+        });
     } catch (err) {
         console.log(err);
         res.status(500).json({
-            message: "Failed to get articles",
+            message: "Failed to delete article",
         });
     }
 };
