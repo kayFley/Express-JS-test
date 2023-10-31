@@ -9,7 +9,7 @@ BCrypt;
 
 1. Run ``` npm install ``` command to install all necessary packages and dependencies.
 
-2. Create a file named ".env" and add the following values to it:
+2. Create a file named ``` .env ``` and add the following values to it:
 ```
 MONGODB="" # "...mongodb.net/blog?..."
 PORT="" # || 4444
