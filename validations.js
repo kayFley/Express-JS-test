@@ -16,7 +16,7 @@ export const registerValidation = [
     body("avatarUrl", "Invalid profile picture link").optional().isURL(),
 ];
 
-export const postCreateValidation = [
+export const createPostValidation = [
     body("title", "Enter a title for your article")
         .isLength({ min: 3 })
         .isString(),
