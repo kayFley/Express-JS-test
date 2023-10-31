@@ -12,7 +12,7 @@ BCrypt;
 2. Create a file named ``` .env ``` and add the following values to it:
 ```
 MONGODB="" # "...mongodb.net/blog?..."
-PORT="" # || 4444
+PORT="" # || 3000
 SECRETCODE="" # JWT
 ```
 
