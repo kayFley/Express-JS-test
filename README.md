@@ -7,7 +7,7 @@ BCrypt;
 
 ### To start using this project, please follow these steps:
 
-1. Run "npm install" command to install all necessary packages and dependencies.
+1. Run ``` npm install ``` command to install all necessary packages and dependencies.
 
 2. Create a file named ".env" and add the following values to it:
 ```
@@ -16,7 +16,7 @@ PORT="" # || 4444
 SECRETCODE="" # JWT
 ```
 
-3. To run the project, use either "npm run start:dev" or "node index.js" commands.
+3. To run the project, use either ``` npm run start:dev ``` or ``` node index.js ``` commands.
 
 ### Example requests:
 
