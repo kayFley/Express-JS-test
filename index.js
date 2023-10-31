@@ -5,12 +5,8 @@ import multer from "multer";
 import cors from "cors";
 import mongoose from "mongoose";
 
-import {
-    registerValidation,
-    loginValidation,
-    postCreateValidation,
-} from "./validations.js";
-import { handleValidationErrors, checkAuth } from "./utils/index.js";
+import { registerValidation, loginValidation, createPostValidation } from "./validations.js";
+import { validationErrors, checkAuth } from "./utils/index.js";
 import { UserController, PostController } from "./controllers/index.js";
 
 dotenv.config();
@@ -43,18 +39,8 @@ app.use(cors());
 app.use("/uploads", express.static("uploads"));
 
 // Routes for authentication
-app.post(
-    "/auth/login",
-    loginValidation,
-    handleValidationErrors,
-    UserController.login
-);
-app.post(
-    "/auth/register",
-    registerValidation,
-    handleValidationErrors,
-    UserController.register
-);
+app.post("/auth/login", loginValidation, validationErrors, UserController.login);
+app.post("/auth/register", registerValidation, validationErrors, UserController.register);
 app.get("/auth/me", checkAuth, UserController.getMe);
 
 // Route for uploading images
@@ -64,25 +50,13 @@ app.post("/upload", checkAuth, upload.single("image"), (req, res) => {
     });
 });
 // Routes for posts
-app.get("/tags", PostController.getLastTags);
 app.get("/posts", PostController.getAll);
-app.get("/posts/tags", PostController.getLastTags);
 app.get("/posts/:id", PostController.getOne);
-app.post(
-    "/posts",
-    checkAuth,
-    postCreateValidation,
-    handleValidationErrors,
-    PostController.create
-);
+app.post("/posts", checkAuth, createPostValidation, validationErrors, PostController.create);
 app.delete("/posts/:id", checkAuth, PostController.remove);
-app.patch(
-    "/posts/:id",
-    checkAuth,
-    postCreateValidation,
-    handleValidationErrors,
-    PostController.update
-);
+app.patch("/posts/:id", checkAuth, createPostValidation, validationErrors, PostController.update);
+app.get("/tags", PostController.getLastTags);
+app.get("/posts/tags", PostController.getLastTags);
 
 // Start server
 app.listen(process.env.PORT || 3000, (err) => {
