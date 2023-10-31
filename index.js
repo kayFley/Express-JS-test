@@ -5,9 +5,9 @@ import multer from "multer";
 import cors from "cors";
 import mongoose from "mongoose";
 
-import { registerValidation, loginValidation, createPostValidation } from "./validations.js";
-import { validationErrors, checkAuth } from "./utils/index.js";
-import { UserController, PostController } from "./controllers/index.js";
+import { registerValidation, loginValidation, createPostValidation } from "./validation.js";
+import { validationErrors, checkAuth } from "./check/index.js";
+import { UserController, PostController } from "./control/index.js";
 
 dotenv.config();
 
